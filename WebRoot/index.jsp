@@ -16,5 +16,7 @@
 	<ul>
 		<li><a href="<%=path%>/do/user/doShowList.jsp">用户管理</a></li>
 	</ul>
+	<a href="<%=path%>/news.zip">代码下载</a>
+	
 </body>
 </html>

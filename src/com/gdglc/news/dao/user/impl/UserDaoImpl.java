@@ -24,25 +24,44 @@ public class UserDaoImpl implements IUserDao {
 
 	@Override
 	public void add(UserInfo info) {
+		info.setId(userList.size()+1);
 		userList.add(info);
 	}
 
 	@Override
 	public void update(UserInfo info) {
-		//获取
-		
+		for (UserInfo userInfo : userList) {
+			if(userInfo.getId().equals(info.getId())){
+				userInfo.setName(info.getName());
+				return;
+			}
+		}
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-		
+		for(int i=0;i<userList.size();i++){
+			UserInfo info = userList.get(i);
+			if(id.equals(info.getId())){
+				userList.remove(i);
+				return;
+			}
+		}	
 	}
 
 	@Override
 	public UserInfo findById(Integer id) {
-		// TODO Auto-generated method stub
+		for (UserInfo info : userList) {
+			if(info.getId().equals(id)){
+				return info;
+			}
+		}
 		return null;
 	}
 
+	public static void main(String[] args) {
+		IUserDao dao = new UserDaoImpl();
+		List<UserInfo> userList = dao.findList();
+		System.out.println(userList.size());
+	}
 }

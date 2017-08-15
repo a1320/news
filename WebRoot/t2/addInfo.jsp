@@ -1,3 +1,5 @@
+<%@page import="java.net.URLEncoder"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 
 <%
@@ -19,8 +21,14 @@
 	System.out.println("业务操作完成");
 	//决定显示页面及显示方式（转发和重定向,转发只应该使用在查询功能，重定向在数据持久化（增，删，改）时使用）
 	//request.getRequestDispatcher("/t2/detail.jsp").forward(request, response);
-	
-	response.sendRedirect(path+"/t2/detail.jsp?name="+name+"&pwd="+pwd+"&loves=1&loves=2");
+	String uri = path+"/t2/detail.jsp?name="+name+"&pwd="+pwd;
+	if(null!=loves){
+		for(String love:loves){
+			System.out.println(URLEncoder.encode(love));
+			uri= uri+"&loves="+URLEncoder.encode(love);
+		}
+	}
+	response.sendRedirect(uri);
 %>
 	
 	
