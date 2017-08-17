@@ -25,6 +25,9 @@ public class UserDaoImpl implements IUserDao {
 	@Override
 	public void add(UserInfo info) {
 		info.setId(userList.size()+1);
+		if("admin".equals(info.getName())){
+			throw new RuntimeException("模拟用户添加失败，用户名不能为admin");
+		}
 		userList.add(info);
 	}
 
@@ -60,8 +63,11 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 	public static void main(String[] args) {
-		IUserDao dao = new UserDaoImpl();
-		List<UserInfo> userList = dao.findList();
-		System.out.println(userList.size());
+//		IUserDao dao = new UserDaoImpl();
+//		List<UserInfo> userList = dao.findList();
+//		System.out.println(userList.size());
+		Integer i = 1;
+		System.out.println(i++);
+		System.out.println(++i);
 	}
 }

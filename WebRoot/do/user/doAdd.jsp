@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="com.gdglc.news.dao.user.impl.UserDaoImpl"%>
 <%@page import="com.gdglc.news.dao.user.IUserDao"%>
 <%@page import="com.gdglc.news.domain.user.UserInfo"%>
@@ -9,6 +10,19 @@ String path = request.getContextPath();
 request.setCharacterEncoding("utf-8");
 //获取请求参数
 String name = request.getParameter("name");
+//服务器端验证请求参数合法性
+if(null==name){
+	System.out.println("用户名为null");
+	//直接重定向到某个错误页面
+	return;
+}
+//字符串要进行去前后空格操作
+name = name.trim();
+if("".equals(name)){
+	System.out.println("用户名为空字符串");
+	//如果前端已经使用了javascript来进行了提交参数的检查，则跳转到错误页面或者直接return
+	return;
+}
 //封装业务方法参数
 UserInfo info = new UserInfo();
 info.setName(name);
@@ -17,8 +31,13 @@ IUserDao dao = new UserDaoImpl();
 try{
 	dao.add(info);
 }catch(Exception e){
+	//记录日志
 	e.printStackTrace();
+	String errorMessage = e.getMessage();
+	session.setAttribute("error", errorMessage);
+	session.setAttribute("info", info);
 	//根据业务需要进行页面跳转，并return该页面
+	response.sendRedirect(path+"/view/user/add.jsp");
 	return;
 }
 //跟进跳转方式及业务需要，把业务方法的返回结果设置到某个作用域

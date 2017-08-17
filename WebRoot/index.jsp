@@ -9,8 +9,21 @@
 <%@include file="/view/common/checkLogin.jsp" %>
 <%
 	//UserInfo loginUser = (UserInfo)session.getAttribute("user");
+	//application.setAttribute("count", 1);
+	Integer count =(Integer)application.getAttribute("count");
+	//如果是项目启动以后第一个人第一次访问，count为null
+	if(null==count){
+		count = 1;
+		application.setAttribute("count", count);
+	}else{
+		count = count+1;
+		application.setAttribute("count", count);
+	}
+	
+	//application.removeAttribute("count");
 %>
 <body>
+	访问：<%=count%> 次
 	欢迎<%=user.getName() %>来到我们游戏中心<br/>
 	<a href="<%=path%>/do/user/doLogout.jsp">退出</a>
 	<ul>
