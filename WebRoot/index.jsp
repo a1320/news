@@ -30,6 +30,7 @@
 		<li><a href="<%=path%>/do/user/doShowList.jsp">用户管理</a></li>
 	</ul>
 	<a href="<%=path%>/news.zip">代码下载</a>
-	
+	<a href="<%=path%>/DB.zip">练习数据库</a>
+	<a href="<%=path%>/new.sql.zip">练习数据库脚本</a>
 </body>
 </html>
