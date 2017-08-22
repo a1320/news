@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
- <!-- 当前web.xml自动继承conf／.xml -->
- <!-- 重写了welcome-file-list 项目的首页 -->
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -10,8 +8,49 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <!-- 设置全局的session失效时间，单位分钟 -->
+  <context-param>
+  	<param-name>location</param-name>
+  	<param-value>spring.xml</param-value>
+  </context-param>
+   <servlet>
+  	<!-- 自己取的任意名称 -->
+  	<servlet-name>init</servlet-name>
+  	<!-- 自定义的servlet类的全名 -->
+  	<servlet-class>com.gdglc.news.action.InitAction</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  	<init-param>
+  		<param-name>path</param-name>
+  		<param-value>appliaction.xml</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>location</param-name>
+  		<param-value>accp</param-value>
+  	</init-param>
+  </servlet>
+  <servlet>
+  	<!-- 自己取的任意名称 -->
+  	<servlet-name>hello</servlet-name>
+  	<!-- 自定义的servlet类的全名 -->
+  	<servlet-class>com.gdglc.news.action.HelloAction</servlet-class>
+  	<!-- 值>=0时，项目启动就自动初始化该servlet，数字越小越在前初始化 -->
+  	<load-on-startup>-3</load-on-startup>
+  </servlet>
+  <servlet>
+  	<servlet-name>login</servlet-name>
+  	<servlet-class>com.gdglc.news.action.user.LoginAction</servlet-class>
+  	<load-on-startup>-2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>login</servlet-name>
+  	<url-pattern>/do/user/doLogin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<!-- 必须对应servlet标签中servlet-name -->
+  	<servlet-name>hello</servlet-name>
+  	<!-- 匹配路径 -->
+  	<url-pattern>/hello</url-pattern>
+  </servlet-mapping>
   <session-config>
-  	<session-timeout>1</session-timeout>
+    <session-timeout>30</session-timeout>
   </session-config>
 </web-app>

@@ -10,7 +10,7 @@
 <%
 	String path = request.getContextPath();
 %>
-	<form action="<%=path%>/do/user/doLogin.jsp" method="get">
+	<form action="${path}/do/user/doLogin" method="post">
 		<label for="name">用户名：</label>
 		<input id="name" type="text" name="name"/>
 		<label for="pwd">密码：</label>
