@@ -1,6 +1,8 @@
 package com.gdglc.news.domain.user;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 /**
  * 
@@ -19,6 +21,8 @@ public class UserInfo implements Serializable{
 	private String name;
 	//权限集合
 	private List<String> authList;
+	
+	private Date createDate;
 	/**
 	 * 获取用户名称
 	 * @return
@@ -44,6 +48,17 @@ public class UserInfo implements Serializable{
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+	public String getTest(){
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return format.format(this.getCreateDate());
 	}
 	
 	/*@Override
