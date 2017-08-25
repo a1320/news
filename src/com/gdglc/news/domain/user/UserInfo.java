@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 /**
  * 
  * 用户信息对象
@@ -58,9 +59,14 @@ public class UserInfo implements Serializable{
 	}
 	public String getTest(){
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		format.setTimeZone(TimeZone.getTimeZone("GMT+8"));
 		return format.format(this.getCreateDate());
 	}
-	
+	public static void main(String[] args) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		format.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+		System.out.println(format.format(new Date()));
+	}
 	/*@Override
 	public String toString() {
 		return "UserInfo [id=" + id + ", name=" + name + ", authList="
