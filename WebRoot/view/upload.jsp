@@ -5,17 +5,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>添加页面</title>
+<title>上传文件</title>
 </head>
 <body>
-	${error}
-	<form action="${path}/do/user/doAdd.jsp" method="post" >
+	<form action="${path}/upload" method="post" enctype="multipart/form-data">
 		<label>用户名：</label>
 		<input type="text" name="name" value="${info.name}"/>
+		<input type="text" name="name" value="1234"/>
+		<br/>
+		<label>附件：</label>
+		<input type="file" name="uploadFile"/>
+		<input type="file" name="uploadFile"/>
 		<br/>
 		<input type="submit" value="提交">
 	</form>
-	<c:remove var="error" scope="session"/>
-	<c:remove var="info" scope="session"/>
 </body>
 </html>

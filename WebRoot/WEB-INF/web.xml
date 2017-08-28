@@ -40,6 +40,14 @@
   	<servlet-class>com.gdglc.news.action.user.LoginAction</servlet-class>
   	<load-on-startup>-2</load-on-startup>
   </servlet>
+  <servlet>
+  	<servlet-name>upload</servlet-name>
+  	<servlet-class>com.gdglc.news.action.UploadAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>upload</servlet-name>
+  	<url-pattern>/upload</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>login</servlet-name>
   	<url-pattern>/do/user/doLogin</url-pattern>
