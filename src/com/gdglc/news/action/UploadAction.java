@@ -14,9 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.FileItem;
+import org.apache.tomcat.util.http.fileupload.FileUploadException;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
+import com.gdglc.news.utils.FileUploadUtil;
 import com.gdglc.news.utils.StaticInfo;
 import com.gdglc.news.utils.Uuid;
 
@@ -30,6 +32,33 @@ public class UploadAction extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+		FileUploadUtil req = null;
+		try {
+			req = new FileUploadUtil(request);
+		} catch (FileUploadException e) {
+			e.printStackTrace();
+		}
+		String name = req.getParameter("name");
+		System.out.println(name);
+		String[] names = req.getParameterValues("name");
+		if(null!=names){
+			for (String item : names) {
+				System.out.println(item);
+			}
+		}
+		String pathName = "image"+File.separator+"one";
+		try {
+			List<String> fileNames = req.writeFile("uploadFile", pathName);
+			for (String fileName : fileNames) {
+				System.out.println(fileName);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//封装业务方法参数，调用业务方法
+	}
+
+	private void test(HttpServletRequest request){
 		DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
 		//获取临时存放文件的路径
 		System.out.println("临时存放文件的路径"+fileItemFactory.getRepository());
@@ -63,7 +92,7 @@ public class UploadAction extends HttpServlet{
 			e.printStackTrace();
 		}
 	}
-
+	
 	private List<String> writeFile(String name,Map<String, List<FileItem>> requestMap)throws Exception {
 		List<String> fileNameList = new ArrayList<String>();
 		List<FileItem> list = requestMap.get(name);
