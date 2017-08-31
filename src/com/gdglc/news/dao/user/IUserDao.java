@@ -2,6 +2,7 @@ package com.gdglc.news.dao.user;
 
 import java.util.List;
 
+import com.gdglc.news.domain.common.PageInfo;
 import com.gdglc.news.domain.user.UserInfo;
 
 public interface IUserDao {
@@ -10,6 +11,13 @@ public interface IUserDao {
 	 * @return
 	 */
 	public List<UserInfo> findList();
+	/**
+	 * 
+	 * @param currentPage 当前页
+	 * @param pageSize 每页显示的条数
+	 * @return
+	 */
+	public void findList(PageInfo<UserInfo> pageInfo);
 	/**
 	 * 添加用户信息
 	 * @param info 用户信息对象

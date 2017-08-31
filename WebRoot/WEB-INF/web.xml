@@ -44,6 +44,14 @@
   	<servlet-name>upload</servlet-name>
   	<servlet-class>com.gdglc.news.action.UploadAction</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>userShowList</servlet-name>
+  	<servlet-class>com.gdglc.news.action.user.ShowListAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>userShowList</servlet-name>
+  	<url-pattern>/do/user/doShowList</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>upload</servlet-name>
   	<url-pattern>/upload</url-pattern>

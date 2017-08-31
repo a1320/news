@@ -21,7 +21,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach items="${userList}" var="info" varStatus="vs">
+		<c:forEach items="${pageInfo.list}" var="info" varStatus="vs">
 			<%-- <c:if test="${vs.index%2==0}">
 				<tr>
 			</c:if>
@@ -47,6 +47,43 @@
 		</c:forEach>
 	</tbody>
 </table>
+当前页【${pageInfo.currentPage}/${pageInfo.totalPage}】
+<c:choose>
+	<c:when test="${pageInfo.currentPage==1}">
+	首页
+    上一页 
+	</c:when>
+	<c:otherwise>
+		<a href="${path}/do/user/doShowList?currentPage=1">首页</a> 
+		<a href="${path}/do/user/doShowList?currentPage=${pageInfo.currentPage-1}">上一页 </a>
+	</c:otherwise>
+</c:choose>
+<c:choose>
+	<c:when test="${pageInfo.currentPage==pageInfo.totalPage}">
+		下一页
+		末页
+	</c:when>
+	<c:otherwise>
+		<a href="${path}/do/user/doShowList?currentPage=${pageInfo.currentPage+1}">下一页 </a>
+		<a href="${path}/do/user/doShowList?currentPage=${pageInfo.totalPage}">末页</a>
+	</c:otherwise>
+</c:choose>
+<%-- <c:if test="${pageInfo.currentPage==1}">
+	首页
+    上一页 
+</c:if>
+<c:if test="${pageInfo.currentPage!=1}">
+	<a href="${path}/do/user/doShowList?currentPage=1">首页</a> 
+	<a href="${path}/do/user/doShowList?currentPage=${pageInfo.currentPage-1}">上一页 </a>
+</c:if> --%>
+<%-- <c:if test="${pageInfo.currentPage==pageInfo.totalPage}">
+	下一页
+	末页
+</c:if>
+<c:if test="${pageInfo.currentPage!=pageInfo.totalPage}">
+	<a href="${path}/do/user/doShowList?currentPage=${pageInfo.currentPage+1}">下一页 </a>
+	<a href="${path}/do/user/doShowList?currentPage=${pageInfo.totalPage}">末页</a>
+</c:if> --%>
 
 </body>
 </html>

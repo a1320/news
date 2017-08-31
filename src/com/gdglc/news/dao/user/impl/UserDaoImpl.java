@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.gdglc.news.dao.user.IUserDao;
+import com.gdglc.news.domain.common.PageInfo;
 import com.gdglc.news.domain.user.UserInfo;
 
 public class UserDaoImpl implements IUserDao {
@@ -20,6 +21,23 @@ public class UserDaoImpl implements IUserDao {
 	@Override
 	public List<UserInfo> findList() {
 		return userList;
+	}
+	
+	public void findList(PageInfo<UserInfo> pageInfo){
+		List<UserInfo> resultList = new ArrayList<UserInfo>();
+		//先有一个总记录数
+		int totalSize = userList.size();
+		pageInfo.setTotalSize(totalSize);
+		//找到获取数据的开始位置
+		int pageSize = pageInfo.getPageSize();
+		int begin = (pageInfo.getCurrentPage()-1)*pageSize;
+		int end = begin+pageSize;
+		for(;begin<end;begin++){
+			if(begin<totalSize){
+				resultList.add(userList.get(begin));
+			}
+		}
+		pageInfo.setList(resultList);
 	}
 
 	@Override

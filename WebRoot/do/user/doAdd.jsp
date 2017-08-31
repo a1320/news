@@ -43,6 +43,6 @@ try{
 //跟进跳转方式及业务需要，把业务方法的返回结果设置到某个作用域
 //跳转页面（一般情况查询使用转发，其他操作使用重定向）
 //根据调用结果确定跳转页面（页面的地址＋跳转的方式）
-response.sendRedirect(path+"/do/user/doShowList.jsp");
+response.sendRedirect(path+"/do/user/doShowList");
 //request.getRequestDispatcher("/do/user/doShowList.jsp").forward(request, response);
 %>
