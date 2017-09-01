@@ -48,6 +48,15 @@
   	<servlet-name>userShowList</servlet-name>
   	<servlet-class>com.gdglc.news.action.user.ShowListAction</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>jndi</servlet-name>
+  	<servlet-class>com.gdglc.news.action.JndiAction</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>jndi</servlet-name>
+  	<url-pattern>/jndiAction</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>userShowList</servlet-name>
   	<url-pattern>/do/user/doShowList</url-pattern>
@@ -69,4 +78,15 @@
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>
+  <env-entry>
+  	<env-entry-name>age</env-entry-name>
+  	<env-entry-type>java.lang.Integer</env-entry-type>
+  	<env-entry-value>15</env-entry-value>
+  </env-entry>
+  <resource-ref>
+  	<description>jndi数据连接池</description>
+  	<res-ref-name>jdbc/myDb</res-ref-name>
+  	<res-type>javax.sql.DataSource</res-type>
+  	<res-auth>Container</res-auth>
+  </resource-ref>
 </web-app>

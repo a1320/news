@@ -7,13 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gdglc.news.biz.user.IUserBiz;
+import com.gdglc.news.biz.user.impl.UserBizImpl;
 import com.gdglc.news.dao.user.IUserDao;
 import com.gdglc.news.dao.user.impl.UserDaoImpl;
 import com.gdglc.news.domain.common.PageInfo;
 import com.gdglc.news.domain.user.UserInfo;
 
 public class ShowListAction extends HttpServlet{
-
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -23,7 +25,7 @@ public class ShowListAction extends HttpServlet{
 		//获取请求参数
 		//封装业务方法参数
 		//调用业务方法，获取结果
-		IUserDao dao = new UserDaoImpl();
+		IUserBiz biz = new UserBizImpl();
 		int currentPage = 1;
 		String currentPageStr = request.getParameter("currentPage");
 		if(null!=currentPageStr&&!"".equals(currentPageStr.trim())){
@@ -36,7 +38,7 @@ public class ShowListAction extends HttpServlet{
 		}
 		PageInfo<UserInfo> pageInfo = new PageInfo<UserInfo>();
 		pageInfo.setCurrentPage(currentPage);
-		dao.findList(pageInfo);
+		biz.findList(pageInfo);
 		//把userList添加到了request作用域，也可以理解为在request对象中添加了额外属性
 		request.setAttribute("pageInfo", pageInfo);
 		//List<UserInfo> userList = dao.findList();

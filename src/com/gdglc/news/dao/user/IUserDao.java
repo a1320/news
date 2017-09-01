@@ -18,6 +18,17 @@ public interface IUserDao {
 	 * @return
 	 */
 	public void findList(PageInfo<UserInfo> pageInfo);
+	
+	/**
+	 * 获取符合条件的记录总数
+	 * @param userInfo
+	 * @return
+	 */
+	public int findCount(UserInfo userInfo);
+	
+	public List<UserInfo> findList(int currentPage,int pageSize,UserInfo userInfo);
+	
+	
 	/**
 	 * 添加用户信息
 	 * @param info 用户信息对象
