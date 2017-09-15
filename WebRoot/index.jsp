@@ -44,10 +44,13 @@
 	<ul>
 		<li><a href="<%=path%>/do/user/doShowList">用户管理</a></li>
 	</ul>
+	<a href="<%=path%>/20150614S27.0.pdf">试卷下载</a>
+	<a href="<%=path%>/pet.zip">试卷答案</a>
 	<a href="<%=path%>/news.zip">代码下载</a>
 	<a href="<%=path%>/DB.zip">练习数据库</a>
 	<a href="<%=path%>/new.sql.zip">练习数据库脚本</a>
 	<a href="<%=path%>/jstl-1.2.jar">jstl1.2</a>
+	<a href="<%=path%>/2015-09-13.pdf">模拟试卷下载</a>
 	
 	${1+1 }
 	<%
