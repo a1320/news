@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+@WebServlet(urlPatterns={"/hello"},loadOnStartup=3)
 public class HelloAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,6 +33,7 @@ public class HelloAction extends HttpServlet {
 	/**
 	 * @see Servlet#destroy()
 	 */
+	@Override
 	public void destroy() {
 		System.out.println("销毁");
 	}

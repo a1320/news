@@ -9,84 +9,95 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <context-param>
-  	<param-name>location</param-name>
-  	<param-value>spring.xml</param-value>
+    <param-name>location</param-name>
+    <param-value>spring.xml</param-value>
   </context-param>
-   <servlet>
-  	<!-- 自己取的任意名称 -->
-  	<servlet-name>init</servlet-name>
-  	<!-- 自定义的servlet类的全名 -->
-  	<servlet-class>com.gdglc.news.action.InitAction</servlet-class>
-  	<load-on-startup>1</load-on-startup>
-  	<init-param>
-  		<param-name>path</param-name>
-  		<param-value>appliaction.xml</param-value>
-  	</init-param>
-  	<init-param>
-  		<param-name>location</param-name>
-  		<param-value>accp</param-value>
-  	</init-param>
+  <!-- <filter>
+  	<filter-name>encoding</filter-name>
+  	<filter-class>com.gdglc.news.filter.EncondingFilter</filter-class>
+  </filter>
+  <filter>
+  	<filter-name>auth</filter-name>
+  	<filter-class>com.gdglc.news.filter.AuthFilter</filter-class>
+  </filter> -->
+  
+  <!-- <filter-mapping>
+  	<filter-name>encoding</filter-name>
+  	<url-pattern>/*</url-pattern>
+  	<dispatcher>REQUEST</dispatcher>
+  </filter-mapping> -->
+  <!-- <filter-mapping>
+  	<filter-name>auth</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping> -->
+  <servlet>
+    <servlet-name>init</servlet-name>
+    <servlet-class>com.gdglc.news.action.InitAction</servlet-class>
+    <init-param>
+      <param-name>path</param-name>
+      <param-value>appliaction.xml</param-value>
+    </init-param>
+    <init-param>
+      <param-name>location</param-name>
+      <param-value>accp</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+ <!--  <servlet>
+    <servlet-name>hello</servlet-name>
+    <servlet-class>com.gdglc.news.action.HelloAction</servlet-class>
+    <load-on-startup>-3</load-on-startup>
+  </servlet> -->
+  <servlet>
+    <servlet-name>login</servlet-name>
+    <servlet-class>com.gdglc.news.action.user.LoginAction</servlet-class>
+    <load-on-startup>-2</load-on-startup>
   </servlet>
   <servlet>
-  	<!-- 自己取的任意名称 -->
-  	<servlet-name>hello</servlet-name>
-  	<!-- 自定义的servlet类的全名 -->
-  	<servlet-class>com.gdglc.news.action.HelloAction</servlet-class>
-  	<!-- 值>=0时，项目启动就自动初始化该servlet，数字越小越在前初始化 -->
-  	<load-on-startup>-3</load-on-startup>
+    <servlet-name>upload</servlet-name>
+    <servlet-class>com.gdglc.news.action.UploadAction</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>login</servlet-name>
-  	<servlet-class>com.gdglc.news.action.user.LoginAction</servlet-class>
-  	<load-on-startup>-2</load-on-startup>
+    <servlet-name>userShowList</servlet-name>
+    <servlet-class>com.gdglc.news.action.user.ShowListAction</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>upload</servlet-name>
-  	<servlet-class>com.gdglc.news.action.UploadAction</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>userShowList</servlet-name>
-  	<servlet-class>com.gdglc.news.action.user.ShowListAction</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>jndi</servlet-name>
-  	<servlet-class>com.gdglc.news.action.JndiAction</servlet-class>
-  	<load-on-startup>1</load-on-startup>
+    <servlet-name>jndi</servlet-name>
+    <servlet-class>com.gdglc.news.action.JndiAction</servlet-class>
+    <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>jndi</servlet-name>
-  	<url-pattern>/jndiAction</url-pattern>
+    <servlet-name>jndi</servlet-name>
+    <url-pattern>/jndiAction</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>userShowList</servlet-name>
-  	<url-pattern>/do/user/doShowList</url-pattern>
+    <servlet-name>userShowList</servlet-name>
+    <url-pattern>/do/user/doShowList</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>upload</servlet-name>
-  	<url-pattern>/upload</url-pattern>
+    <servlet-name>upload</servlet-name>
+    <url-pattern>/upload</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>login</servlet-name>
-  	<url-pattern>/do/user/doLogin</url-pattern>
+    <servlet-name>login</servlet-name>
+    <url-pattern>/do/user/doLogin</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
-  	<!-- 必须对应servlet标签中servlet-name -->
-  	<servlet-name>hello</servlet-name>
-  	<!-- 匹配路径 -->
-  	<url-pattern>/hello</url-pattern>
-  </servlet-mapping>
+  <!-- <servlet-mapping>
+    <servlet-name>hello</servlet-name>
+    <url-pattern>/hello</url-pattern>
+  </servlet-mapping> -->
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>
   <env-entry>
-  	<env-entry-name>age</env-entry-name>
-  	<env-entry-type>java.lang.Integer</env-entry-type>
-  	<env-entry-value>15</env-entry-value>
+    <env-entry-name>age</env-entry-name>
+    <env-entry-type>java.lang.Integer</env-entry-type>
+    <env-entry-value>15</env-entry-value>
   </env-entry>
   <resource-ref>
-  	<description>jndi数据连接池</description>
-  	<res-ref-name>jdbc/myDb</res-ref-name>
-  	<res-type>javax.sql.DataSource</res-type>
-  	<res-auth>Container</res-auth>
+    <description>jndi数据连接池</description>
+    <res-ref-name>jdbc/myDb</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
   </resource-ref>
 </web-app>

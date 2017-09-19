@@ -43,7 +43,7 @@
             minEvictableIdleTimeMillis="5000"
             initialSize="2"/> -->
             
-            <Resource name="jdbc/myDb"
+          <!--   <Resource name="jdbc/myDb"
             auth="Container"
             type="javax.sql.DataSource"
             username="sa"
@@ -54,5 +54,5 @@
             maxIdle="2"
             maxWait="1000"
             minEvictableIdleTimeMillis="5000"
-            initialSize="1"/>
+            initialSize="1"/> -->
 </Context>

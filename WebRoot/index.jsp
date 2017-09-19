@@ -51,6 +51,7 @@
 	<a href="<%=path%>/new.sql.zip">练习数据库脚本</a>
 	<a href="<%=path%>/jstl-1.2.jar">jstl1.2</a>
 	<a href="<%=path%>/2015-09-13.pdf">模拟试卷下载</a>
+	<a href="<%=path%>/xm.zip">项目资料下载</a>
 	
 	${1+1 }
 	<%

@@ -9,6 +9,7 @@
 <body>
 <%
 	String path = request.getContextPath();
+	System.out.println("进入登陆页面");
 %>
 	<form action="${path}/do/user/doLogin" method="post">
 		<label for="name">用户名：</label>
