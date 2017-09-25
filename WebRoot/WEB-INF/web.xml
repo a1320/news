@@ -12,24 +12,6 @@
     <param-name>location</param-name>
     <param-value>spring.xml</param-value>
   </context-param>
-  <!-- <filter>
-  	<filter-name>encoding</filter-name>
-  	<filter-class>com.gdglc.news.filter.EncondingFilter</filter-class>
-  </filter>
-  <filter>
-  	<filter-name>auth</filter-name>
-  	<filter-class>com.gdglc.news.filter.AuthFilter</filter-class>
-  </filter> -->
-  
-  <!-- <filter-mapping>
-  	<filter-name>encoding</filter-name>
-  	<url-pattern>/*</url-pattern>
-  	<dispatcher>REQUEST</dispatcher>
-  </filter-mapping> -->
-  <!-- <filter-mapping>
-  	<filter-name>auth</filter-name>
-  	<url-pattern>/*</url-pattern>
-  </filter-mapping> -->
   <servlet>
     <servlet-name>init</servlet-name>
     <servlet-class>com.gdglc.news.action.InitAction</servlet-class>
@@ -43,11 +25,6 @@
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
- <!--  <servlet>
-    <servlet-name>hello</servlet-name>
-    <servlet-class>com.gdglc.news.action.HelloAction</servlet-class>
-    <load-on-startup>-3</load-on-startup>
-  </servlet> -->
   <servlet>
     <servlet-name>login</servlet-name>
     <servlet-class>com.gdglc.news.action.user.LoginAction</servlet-class>
@@ -82,12 +59,8 @@
     <servlet-name>login</servlet-name>
     <url-pattern>/do/user/doLogin</url-pattern>
   </servlet-mapping>
-  <!-- <servlet-mapping>
-    <servlet-name>hello</servlet-name>
-    <url-pattern>/hello</url-pattern>
-  </servlet-mapping> -->
   <session-config>
-    <session-timeout>30</session-timeout>
+    <session-timeout>1</session-timeout>
   </session-config>
   <env-entry>
     <env-entry-name>age</env-entry-name>
